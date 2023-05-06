@@ -1,0 +1,57 @@
+CLASS:: ELWFS
+SUMMARY:: Equidistant Linear Wave Field Synthesis Panner
+CATEGORIES:: UGens>Multichannel>Panners
+
+DESCRIPTION::
+
+This UGen is a panner for wave field synthesis speaker arrays that is placed equidistantly.
+
+
+CLASSMETHODS::
+
+METHOD::ar
+
+ARGUMENT::input
+
+The input signal. (WARNING - 1 channel audio only).
+
+ARGUMENT::number_of_speakers
+Number of speakes in the speaker array.(WARNING - Even number of speakers only).
+
+ARGUMENT::speaker_distance
+Speaker distance between 2 speakers in meters.
+
+ARGUMENT::virutal_x
+
+Position of the sound source on the X-axis in meters.
+
+ARGUMENT::virutal_z
+
+Position of the sound source on the Z-axis in meters.
+
+ARGUMENT::posHead
+
+Distance between speaker and the listener in meters.
+
+ARGUMENT::k
+
+Amplitude change constant.
+
+EXAMPLES::
+
+CODE::
+
+SynthDef(\WFS, {
+
+	arg out=0, amp = 0.5, pan_x=0.0, pan_z=0.0;
+	var sig;
+
+	sig = WhiteNoise.ar*EnvGen.kr(Env.perc(0.01, 0.2), Impulse.kr(2));
+
+	sig = ELWFS.ar(sig, virutal_z: pan_z, virutal_x: pan_x);
+
+	Out.ar(out, sig);
+
+}).add;
+
+::
