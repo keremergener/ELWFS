@@ -1,6 +1,6 @@
 ELWFS {
 	*ar{
-		arg input, number_of_speakers = 8, speaker_distance=0.127, virutal_z=0.0, virutal_x=0.0, posHead=1, k = 0.1;
+		arg input, number_of_speakers = 8, speaker_distance=0.127, virtual_z=0.0, virtual_x=0.0, posHead=1, k = 2.0;
 		var sig, speaker_dist, distance, time_delay, filter, positionHeadDist, inverse, max_delayTime, speedOfSound, amp;
 
 		sig = input;
@@ -14,12 +14,11 @@ ELWFS {
 
 		speaker_dist = inverse ++ speaker_dist;
 
-		distance=((virutal_x-speaker_dist).pow(2)) + ((virutal_z).pow(2)).sqrt;
+		distance=((virtual_x - speaker_dist).pow(2)) + ((virtual_z).pow(2)).sqrt;
 
-		time_delay = (distance / speedOfSound).abs;
+		positionHeadDist=((virtual_x-speaker_dist).pow(2)) + ((((-1)*posHead)-virtual_z).pow(2)).sqrt;
 
-
-		positionHeadDist=((virutal_x-speaker_dist).pow(2)) + ((((-1)*posHead)-virutal_z).pow(2)).sqrt;
+		time_delay = (positionHeadDist / speedOfSound).abs;
 
 
 		time_delay=DelayN.ar(sig, 0.64, time_delay);
@@ -34,11 +33,3 @@ ELWFS {
 	}
 
 }
-
-
-
-
-
-
-
-
