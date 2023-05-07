@@ -21,11 +21,11 @@ Number of speakes in the speaker array.(WARNING - Even number of speakers only).
 ARGUMENT::speaker_distance
 Speaker distance between 2 speakers in meters.
 
-ARGUMENT::virutal_x
+ARGUMENT::virtual_x
 
 Position of the sound source on the X-axis in meters.
 
-ARGUMENT::virutal_z
+ARGUMENT::virtual_z
 
 Position of the sound source on the Z-axis in meters.
 
