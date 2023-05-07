@@ -19,7 +19,7 @@ ELWFS {
 		time_delay = (distance / speedOfSound).abs;
 
 
-		positionHeadDist=distance=((virutal_x-speaker_dist).pow(2)) + ((((-1)*posHead)-virutal_z).pow(2)).sqrt;
+		positionHeadDist=((virutal_x-speaker_dist).pow(2)) + ((((-1)*posHead)-virutal_z).pow(2)).sqrt;
 
 
 		time_delay=DelayN.ar(sig, 0.64, time_delay);
